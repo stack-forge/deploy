@@ -1,0 +1,53 @@
+{
+  "name": "stack-forge-deploy",
+  "version": "1.5.8",
+  "description": "Stackforge deploy action",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint **.js",
+    "package": "ncc build index.js -o dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stack-forge/deploy.git"
+  },
+  "keywords": [
+    "Stackforge",
+    "GitHub",
+    "Actions",
+    "CI",
+    "CD",
+    "AWS"
+  ],
+  "author": "Stackforge",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stack-forge/deploy/issues"
+  },
+  "homepage": "https://github.com/stack-forge/deploy#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/glob": "^0.1.1",
+    "aws-sdk": "^2.889.0",
+    "axios": "^0.21.1",
+    "backoff": "^2.5.0",
+    "crypto": "^1.0.1",
+    "event-stream": "^4.0.1",
+    "form-data": "^4.0.0",
+    "fs-extra": "^9.1.0",
+    "js-yaml": "^4.1.0",
+    "level-write-stream": "^1.0.0",
+    "mime": "^2.5.2",
+    "once": "^1.4.0",
+    "queue-async": "^1.2.1",
+    "readdirp": "^3.6.0",
+    "s3-sync-aws": "^1.1.1",
+    "tar": "^6.1.0",
+    "targz": "^1.0.1",
+    "xtend": "^4.0.2"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "^0.22.3",
+    "eslint": "^7.24.0"
+  }
+}

@@ -1,0 +1,25 @@
+name: "Stackforge Deploy"
+description: "Deploy your app"
+branding:
+  icon: 'cloud'
+  color: 'blue'
+inputs:
+  app:
+    description: "The app you're deploying"
+    required: true
+  config_file:
+    description: "Stackforge's config file"
+    required: true
+  api_key: 
+    description: "Stackforge's API key"
+    required: true
+  stage:
+    description: "The stage you're deploying to"
+    required: true
+  # bucket_cdn parameters
+  website_files_dir:
+    description: "The folder containing the files of your website"
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
