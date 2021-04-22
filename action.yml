@@ -1,5 +1,5 @@
 name: "Stackforge Deploy"
-description: "Deploy your app"
+description: "Deploy your apps"
 branding:
   icon: 'cloud'
   color: 'blue'
