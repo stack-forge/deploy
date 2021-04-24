@@ -120,7 +120,7 @@ async function run () {
     })
   } catch (error) {
     console.error(error)
-    throw error
+    core.setFailed(error.message)
   }
 }
 
