@@ -120,11 +120,7 @@ async function run () {
     })
   } catch (error) {
     console.error(error)
-    const showStackTrace = process.env.SHOW_STACK_TRACE
-
-    if (showStackTrace === 'true') {
-      throw error
-    }
+    throw error
   }
 }
 
