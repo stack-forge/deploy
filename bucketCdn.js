@@ -12,7 +12,9 @@ module.exports = async function bucketCdn (
   tfOutputs
 ) {
   const globber = await glob.create(actionParams.websiteFilesDir)
-  const [websiteFilesDir] = await globber.glob()
+  console.log(actionParams.websiteFilesDir)
+  const [websiteFilesDir, ...r] = await globber.glob()
+  console.log([websiteFilesDir, ...r])
   if (!websiteFilesDir) {
     throw new Error(`Could not locate file ${actionParams.websiteFilesDir}`)
   }
