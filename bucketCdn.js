@@ -16,7 +16,6 @@ module.exports = async function bucketCdn (
   if (!websiteFilesDir) {
     throw new Error(`Could not locate file ${actionParams.websiteFilesDir}`)
   }
-  console.log(tfOutputs)
   const bucket = tfOutputs[`${app}.bucket_name`]
   const distributionId = tfOutputs[`${app}.cloudfront_distribution_id`]
 
