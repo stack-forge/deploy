@@ -37,7 +37,7 @@ async function run () {
     form.append('apiKey', apiKey)
     form.append('stage', stage)
 
-    const outputs = filterAndDotifyKeys(app, process.env.STACKFORGE_OUTPUT)
+    const outputs = filterAndDotifyKeys(app, JSON.parse(process.env.STACKFORGE_OUTPUTS))
 
     if (hostInfo.type === 'bucket_cdn') {
       await bucketCdn(
