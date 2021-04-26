@@ -1,6 +1,6 @@
-const glob = require('@actions/glob')
 const AWS = require('aws-sdk')
 const readdirp = require('readdirp')
+const path = require('path')
 const s3Sync = require('./s3SyncAws')
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
@@ -11,18 +11,12 @@ module.exports = async function bucketCdn (
   stackforge,
   tfOutputs
 ) {
-  const globber = await glob.create(actionParams.websiteFilesDir)
-  console.log(actionParams.websiteFilesDir)
-  const [websiteFilesDir, ...r] = await globber.glob()
-  console.log([websiteFilesDir, ...r])
-  if (!websiteFilesDir) {
-    throw new Error(`Could not locate file ${actionParams.websiteFilesDir}`)
-  }
+  const sourceDir = path.join(process.cwd(), actionParams.websiteFilesDir);
   const bucket = tfOutputs[`${app}.bucket_name`]
   const distributionId = tfOutputs[`${app}.cloudfront_distribution_id`]
 
   return new Promise((resolve, reject) => {
-    const files = readdirp(websiteFilesDir)
+    const files = readdirp(sourceDir)
     const uploader = s3Sync({
       bucket: bucket,
       concurrency: 16,
