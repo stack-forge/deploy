@@ -16,6 +16,9 @@ inputs:
   stage:
     description: "The stage you're deploying to"
     required: true
+  infra_outputs:
+    description: "The forge step outputs"
+    required: true
   # bucket_cdn parameters
   website_files_dir:
     description: "The folder containing the files of your website"

@@ -1,6 +1,5 @@
 const core = require('@actions/core')
 const glob = require('@actions/glob')
-const FormData = require('form-data')
 const fs = require('fs-extra')
 const yaml = require('js-yaml')
 const filterAndDotifyKeys = require('./filterAndDotifyKeys')
@@ -11,8 +10,9 @@ async function run () {
     // Get inputs
     const app = core.getInput('app', { required: true })
     const configFilePath = core.getInput('config_file', { required: true })
-    const apiKey = core.getInput('api_key', { required: true })
-    const stage = core.getInput('stage', { required: true })
+    // const apiKey = core.getInput('api_key', { required: true })
+    // const stage = core.getInput('stage', { required: true })
+    const infraOutputs = core.getInput('infra_outputs', { required: true })
     // bucket_cdn parameters
     const websiteFilesDir = core.getInput('website_files_dir', {
       required: false
@@ -32,12 +32,7 @@ async function run () {
       )
     }
 
-    const form = new FormData()
-    form.append('configFile', fs.createReadStream(configFile))
-    form.append('apiKey', apiKey)
-    form.append('stage', stage)
-
-    const outputs = filterAndDotifyKeys(app, JSON.parse(process.env.STACKFORGE_OUTPUTS))
+    const outputs = filterAndDotifyKeys(app, JSON.parse(infraOutputs))
 
     if (hostInfo.type === 'bucket_cdn') {
       await bucketCdn(
