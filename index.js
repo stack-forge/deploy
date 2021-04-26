@@ -42,7 +42,7 @@ async function run () {
     form.append('apiKey', apiKey)
     form.append('stage', stage)
 
-    const outFile = 'output.tgz'
+    const outFile = 'stackforge-output.tgz'
     const writer = fs.createWriteStream(outFile)
     await axios
       .post('https://api.stackforge.tech/v1/deploy', form, {
@@ -69,7 +69,7 @@ async function run () {
         })
       })
 
-    const cwd = './out'
+    const cwd = './stackforge-out'
     await decompress({
       src: outFile,
       dest: cwd
